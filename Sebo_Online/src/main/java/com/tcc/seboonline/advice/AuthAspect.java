@@ -1,15 +1,12 @@
 package com.tcc.seboonline.advice;
 
-import com.tcc.seboonline.annotations.Authorized;
-import com.tcc.seboonline.exceptions.NotLoggedInException;
-import com.tcc.seboonline.exceptions.UnauthorizedException;
+import com.tcc.seboonline.annotations.AutorizacaoUsuario;
+import com.tcc.seboonline.excecoes.NaoAutorizadoException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.apache.logging.log4j.LogManager;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
 
@@ -26,15 +23,15 @@ public class AuthAspect {
     }
 
     @Around("@annotation(authorized)")
-    public Object authenticate(ProceedingJoinPoint pjp, Authorized authorized) throws Throwable {
+    public Object authenticate(ProceedingJoinPoint pjp, AutorizacaoUsuario authorized) throws Throwable {
 
         HttpSession session = req.getSession(false);
         if (session == null) {
-            throw new UnauthorizedException("Deve estar logado para realizar esta ação");
+            throw new NaoAutorizadoException("Deve estar logado para realizar esta ação");
         }
 
         if (session.getAttribute("user") == null) {
-            throw new UnauthorizedException("Deve estar logado para realizar esta ação");
+            throw new NaoAutorizadoException("Deve estar logado para realizar esta ação");
         }
 
 

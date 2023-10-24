@@ -1,6 +1,6 @@
 package com.tcc.seboonline.advice;
 
-import com.tcc.seboonline.exceptions.NotLoggedInException;
+import com.tcc.seboonline.excecoes.NaoLogadoException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,8 +16,8 @@ public class RestExceptionHandler {
     private static final Logger LOGGER = LogManager.getLogger(RestExceptionHandler.class);
 
 
-    @ExceptionHandler(NotLoggedInException.class)
-    public ResponseEntity<Object> handleNotLoggedInException(HttpServletRequest request, NotLoggedInException notLoggedInException) {
+    @ExceptionHandler(NaoLogadoException.class)
+    public ResponseEntity<Object> handleNotLoggedInException(HttpServletRequest request, NaoLogadoException notLoggedInException) {
 
         // Registra um log de info
         LOGGER.info("Usuário não está logado. Enviando resposta HTTP 401 Unauthorized");
