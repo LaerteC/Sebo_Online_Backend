@@ -4,16 +4,16 @@ import com.tcc.seboonline.excecoes.FavoritoNaoEncontradoException;
 
 import java.util.Arrays;
 
-public enum TipoFavorito {
-    UPVOTE(1), DOWNVOTE(-1),
+public enum EnumTipoFavorito {
+    favoritar(1), desfavoritar(-1),
     ;
     private int direction;
 
-    TipoFavorito(int direction) {
+    EnumTipoFavorito(int direction) {
     }
 
-    public static TipoFavorito lookup(Integer direction) throws FavoritoNaoEncontradoException {
-        return Arrays.stream(TipoFavorito.values())
+    public static EnumTipoFavorito lookup(Integer direction) throws FavoritoNaoEncontradoException {
+        return Arrays.stream(EnumTipoFavorito.values())
                 .filter(value -> value.getDirection().equals(direction))
                 .findAny()
                 .orElseThrow(() -> new FavoritoNaoEncontradoException("Favoritar não encontrado"));

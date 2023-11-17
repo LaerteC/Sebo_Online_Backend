@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tcc.seboonline.servicos.PerfilUsuario;
+import com.tcc.seboonline.servicos.PerfilUsuarioService;
 
 @RestController
 @RequestMapping("/profile")
@@ -47,7 +47,7 @@ public class PerfiUsuarioController {
     private static final Logger logger = LoggerFactory.getLogger(PerfiUsuarioController.class);
 
     @Autowired
-    private PerfilUsuario profileService;
+    private PerfilUsuarioService profileService;
 
     @AutorizacaoUsuario
     @GetMapping

@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import static com.tcc.seboonline.modelos.TipoFavorito.DOWNVOTE;
-import static com.tcc.seboonline.modelos.TipoFavorito.UPVOTE;
+import static com.tcc.seboonline.modelos.EnumTipoFavorito.desfavoritar;
+import static com.tcc.seboonline.modelos.EnumTipoFavorito.favoritar;
 
 
 @Service
@@ -46,7 +46,7 @@ public class FavoritoService {
         if (voteByPostAndUser.isPresent() &&
                 voteByPostAndUser.get().getVoteType()
                         .equals(vote.getVoteType())) {
-            if (voteByPostAndUser.get().getVoteType().equals(UPVOTE)){
+            if (voteByPostAndUser.get().getVoteType().equals(favoritar)){
                 voteRepository.deleteById(voteByPostAndUser.get().getVoteId());
                 post.setVoteCount(post.getVoteCount() - 1);
                 postRepository.save(post);
@@ -61,20 +61,20 @@ public class FavoritoService {
 
         if (voteByPostAndUser.isPresent() &&
                 voteByPostAndUser.get().getVoteType()
-                        .equals(UPVOTE) && vote.getVoteType().equals(DOWNVOTE))  {
+                        .equals(favoritar) && vote.getVoteType().equals(desfavoritar))  {
             post.setVoteCount(post.getVoteCount() - 2);
             voteRepository.deleteById(voteByPostAndUser.get().getVoteId());
         }
 
         if (voteByPostAndUser.isPresent() &&
                 voteByPostAndUser.get().getVoteType()
-                        .equals(DOWNVOTE) && vote.getVoteType().equals(UPVOTE))  {
+                        .equals(desfavoritar) && vote.getVoteType().equals(favoritar))  {
             post.setVoteCount(post.getVoteCount() + 2);
             voteRepository.deleteById(voteByPostAndUser.get().getVoteId());
         }
 
         if (!voteByPostAndUser.isPresent()) {
-            if (UPVOTE.equals(vote.getVoteType())) {
+            if (favoritar.equals(vote.getVoteType())) {
                 post.setVoteCount(post.getVoteCount() + 1);
             } else {
                 post.setVoteCount(post.getVoteCount() - 1);

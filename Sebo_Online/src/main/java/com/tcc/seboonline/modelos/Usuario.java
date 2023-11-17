@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name = "usuario")
 @AllowSysOut
 public class Usuario implements Serializable {
 

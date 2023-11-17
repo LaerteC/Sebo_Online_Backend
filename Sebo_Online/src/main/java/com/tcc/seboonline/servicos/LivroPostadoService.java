@@ -5,19 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-import com.tcc.seboonline.modelos.ComentariosLivros;
-import com.tcc.seboonline.modelos.LivroPostado;
-import com.tcc.seboonline.modelos.Usuario;
-import com.tcc.seboonline.repositorios.ComentariosLivrosRepository;
-import com.tcc.seboonline.repositorios.LivroPostadoRepository;
-import com.tcc.seboonline.repositorios.PerfilUsuarioRepository;
-import com.tcc.seboonline.repositorios.FavoritoRepository;
+import com.tcc.seboonline.controladores.LivroPostadoController;
+import com.tcc.seboonline.excecoes.LivroPostadoNaoEncontradoException;
+import com.tcc.seboonline.modelos.*;
+import com.tcc.seboonline.repositorios.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tcc.seboonline.excecoes.PerfilNaoEncontradoException;
 import com.tcc.seboonline.excecoes.UsuarioNEncontradoException;
-import com.tcc.seboonline.modelos.PerfilUsuario;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -31,9 +29,17 @@ public class LivroPostadoService {
 	@Autowired
     private PerfilUsuarioRepository profileRepository;
 
+
+	@Autowired
+	LivroUsuarioRepository usuarioRepository;
+
 	@Autowired
 	private UsuarioService usersService;
 	private final FavoritoRepository voteRepository;
+
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(LivroPostadoService.class);
+
 
 
 	public LivroPostadoService(LivroPostadoRepository postRepository,
@@ -75,7 +81,9 @@ public class LivroPostadoService {
 	public List<LivroPostado> getAllSubscribedPosts(Usuario sessionUser) throws UsuarioNEncontradoException, PerfilNaoEncontradoException {
 		List<LivroPostado> posts = new LinkedList<>();
 
-		posts = postRepository.findAll();
+		posts = postRepository.findByOcultar();
+
+
         Optional<PerfilUsuario> profile = profileRepository.findByOwner(sessionUser);
 
 		if (profile.isEmpty())
@@ -88,4 +96,47 @@ public class LivroPostadoService {
 
 		return posts;
 	}
+
+
+	public List<LivroPostado> findLivroPostadoByGeneroLivro(String category) throws LivroPostadoNaoEncontradoException {
+		List<LivroPostado> posts = new LinkedList<>();
+
+		posts =  postRepository.findLivroPostadoByGeneroLivro(category);
+
+		if(posts.isEmpty())
+			throw new LivroPostadoNaoEncontradoException(" O gênero pesquisado não possui lvros cadastrados !");
+
+		return posts;
+	}
+
+
+	public LivroPostado findById(int id) {
+		LOGGER.info("Tentativa de buscar postagem com ID: {0}", id);
+
+		Optional<LivroPostado> postagem = this.postRepository.findById(id);
+
+		if (postagem.isPresent()) {
+			LOGGER.info("Postagem encontrada com ID: {0}", id);
+			return postagem.get();
+		} else {
+			LOGGER.info("Nenhuma postagem encontrada com ID: {0}", id);
+			return null;
+		}
+	}
+
+
+	public LivroUsuario troca(int id){
+		LOGGER.info("Tentativa de buscar de um e-mail do Usuário com ID: {0}", id);
+		LivroUsuario usuarioEmail = this.usuarioRepository.findEmailUser(id);
+
+		if (usuarioEmail!= null ) {
+			LOGGER.info(" A Busca pelo Usuário com o e-mail e nome do livro de SUCESSO com ID: {0}", id);
+			return usuarioEmail;
+		} else {
+			LOGGER.info(" A Busca pelo Usuário com o e-mail e nome do livro FALSE  ID: {0}", id);
+			return null;
+		}
+	}
+
+
 }

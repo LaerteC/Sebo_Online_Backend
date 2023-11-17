@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "profiles")
+@Table(name = "perfilusuario")
 public class PerfilUsuario implements Serializable{
 
 

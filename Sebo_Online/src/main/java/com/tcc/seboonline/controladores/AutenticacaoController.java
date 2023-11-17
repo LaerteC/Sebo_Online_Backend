@@ -7,7 +7,7 @@ import com.tcc.seboonline.excecoes.EmailReservadoException;
 import com.tcc.seboonline.excecoes.UsuarioNEncontradoException;
 import com.tcc.seboonline.modelos.Usuario;
 import com.tcc.seboonline.servicos.AuthService;
-import com.tcc.seboonline.servicos.PerfilUsuario;
+import com.tcc.seboonline.servicos.PerfilUsuarioService;
 
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class AutenticacaoController {
     private AuthService authService;
 
     @Autowired
-    private PerfilUsuario profileService;
+    private PerfilUsuarioService profileService;
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody RequisicaoLoginDTO loginRequest, HttpSession session) {

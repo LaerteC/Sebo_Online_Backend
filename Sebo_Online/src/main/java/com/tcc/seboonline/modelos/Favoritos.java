@@ -15,11 +15,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Builder
+@Table(name = "favoritos")
 public class Favoritos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer voteId;
-    private TipoFavorito voteType;
+    private EnumTipoFavorito voteType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)

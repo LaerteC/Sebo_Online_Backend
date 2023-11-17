@@ -12,4 +12,5 @@ import com.tcc.seboonline.modelos.PerfilUsuario;
 @Repository
 public interface PerfilUsuarioRepository extends JpaRepository<PerfilUsuario, Integer> {
     Optional<PerfilUsuario> findByOwner(Usuario user);
+
 }

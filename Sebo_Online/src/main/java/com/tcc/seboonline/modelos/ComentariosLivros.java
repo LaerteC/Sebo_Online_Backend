@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "comments")
+@Table(name = "ComentariosLivros")
 public class ComentariosLivros implements Serializable {
 
 
@@ -24,7 +24,7 @@ public class ComentariosLivros implements Serializable {
 	private String imageUrl;
 
     @OneToMany(cascade = CascadeType.ALL)
-	private List<ComentariosLivros> comments;
+	private List<ComentariosLivros> comentario;
 
     @ManyToOne
 	private Usuario author;

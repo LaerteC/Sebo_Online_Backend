@@ -19,7 +19,7 @@ import com.tcc.seboonline.excecoes.UsuarioNEncontradoException;
 public class InscricaoService {
 
     @Autowired
-    private PerfilUsuario profileService;
+    private PerfilUsuarioService profileService;
 
     @Autowired
     private PerfilUsuarioRepository profileRepository;

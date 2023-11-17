@@ -33,7 +33,7 @@ import com.tcc.seboonline.excecoes.SenhaIncorretaException;
 
 @Service
 @AllowSysOut
-public class PerfilUsuario {
+public class PerfilUsuarioService {
     
     @Autowired
     private PerfilUsuarioRepository profileRepository;
