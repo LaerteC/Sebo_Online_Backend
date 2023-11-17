@@ -3,8 +3,8 @@
 </h1>
 
 <p align="center">
- <img src="https://img.shields.io/static/v1?label=Junit_API&message=Laerte&color=8257E5&labelColor=000000" alt="@laerte" />
- <img src="https://img.shields.io/static/v1?label=Tipo&message=Desafio&color=8257E5&labelColor=000000" alt="Desafio/Teste" />
+   <img src="https://img.shields.io/static/v1?label=UFPR&message=TCC_2&color=8257E5&labelColor=000000" alt="@TCC_2" />
+ <img src="https://img.shields.io/static/v1?label=Tipo&message=SeboOnline Empréstimos de Livros&color=8257E5&labelColor=000000" alt="" />
 </p>
 
 API para Disponibilizar recursos para o front end ;
