@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 
 @RestController
-@RequestMapping("/subscription")
+@RequestMapping("/amigosinscricao")
 @AllowSysOut
 public class AmigosSeguirController {
 

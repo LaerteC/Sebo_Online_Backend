@@ -18,9 +18,10 @@ public class ImagensLivros implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String type;
 
-    @Column(unique = false, nullable = false, length = 5_000_000)
+    @Column(unique = false, nullable = false, length = 2_000_000)
     private String content;
 
 }

@@ -26,7 +26,7 @@ import com.tcc.seboonline.servicos.LivroPostadoService;
 import com.tcc.seboonline.servicos.UsuarioService;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/livropostado")
 public class LivroPostadoController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LivroPostadoController.class);

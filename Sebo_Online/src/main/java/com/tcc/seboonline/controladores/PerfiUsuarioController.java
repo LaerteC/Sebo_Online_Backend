@@ -361,7 +361,5 @@ public class PerfiUsuarioController {
         }
     }
 
-    // Outros métodos mantidos com a mesma estrutura
-    // ...
 }
 

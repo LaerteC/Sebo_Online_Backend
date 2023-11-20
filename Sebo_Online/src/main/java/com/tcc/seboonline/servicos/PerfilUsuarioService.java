@@ -36,7 +36,7 @@ import com.tcc.seboonline.excecoes.SenhaIncorretaException;
 public class PerfilUsuarioService {
     
     @Autowired
-    private PerfilUsuarioRepository profileRepository;
+    private PerfilUsuarioRepository perfilUsuarioRepository;
 
     @Autowired
     private UsuarioService userService;
@@ -48,7 +48,7 @@ public class PerfilUsuarioService {
         com.tcc.seboonline.modelos.PerfilUsuario profile = new com.tcc.seboonline.modelos.PerfilUsuario();
         profile.setOwner(user);
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     public com.tcc.seboonline.modelos.PerfilUsuario getProfileByUser(Usuario user) throws PerfilNaoEncontradoException, UsuarioNEncontradoException {
@@ -57,7 +57,7 @@ public class PerfilUsuarioService {
         if (optionalUser.isEmpty())
             throw new UsuarioNEncontradoException("O usuário não foi encontrado.");
 
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findByOwner(optionalUser.get());
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findByOwner(optionalUser.get());
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado a este usuário  " + user.getFirstName() + " "
@@ -67,7 +67,7 @@ public class PerfilUsuarioService {
     }
 
     public com.tcc.seboonline.modelos.PerfilUsuario getProfile(int id) throws PerfilNaoEncontradoException {
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile  = profileRepository.findById(id);
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile  = perfilUsuarioRepository.findById(id);
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado a este usuário com ID " + id + " não foi encontrado");
@@ -88,7 +88,7 @@ public class PerfilUsuarioService {
     }
 
     public InformacoesPessoaisDTO getGeneralInformation(Usuario sessionUser) throws PerfilNaoEncontradoException {
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findByOwner(sessionUser);
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findByOwner(sessionUser);
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado " + sessionUser.getFirstName() + " "
@@ -127,11 +127,11 @@ public class PerfilUsuarioService {
             throw new EmailReservadoException("The email " + generalInfo.getEmail() + " is being used.");
 
         userRepository.save(user);
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     public EnderecoPerfilDTO getProfileLocation(Usuario sessionUser) throws PerfilNaoEncontradoException {
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findByOwner(sessionUser);
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findByOwner(sessionUser);
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado " + sessionUser.getFirstName() + " "
@@ -157,11 +157,11 @@ public class PerfilUsuarioService {
         profile.setBornCity(profileLocation.getBornCity());
         profile.setBornCountry(profileLocation.getBornCountry());
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     public PerfilAcademicoDTO getProfileEducation(Usuario sessionUser) throws PerfilNaoEncontradoException {
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findByOwner(sessionUser);
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findByOwner(sessionUser);
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado para " + sessionUser.getFirstName() + " "
@@ -185,12 +185,12 @@ public class PerfilUsuarioService {
 
         profile.setSchoolName(profileEducation.getSchoolName());
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
 
     public ProfissaoDTO getProfileWork(Usuario sessionUser) throws PerfilNaoEncontradoException {
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findByOwner(sessionUser);
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findByOwner(sessionUser);
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado para " + sessionUser.getFirstName() + " "
@@ -215,12 +215,12 @@ public class PerfilUsuarioService {
         profile.setCompanyName(profileWork.getCompanyName());
         profile.setCompanyUrl(profileWork.getCompanyUrl());
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
 
     public EstadoCivilDTO getProfileMaritalStatus(Usuario sessionUser) throws PerfilNaoEncontradoException {
-        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findByOwner(sessionUser);
+        Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findByOwner(sessionUser);
 
         if (optionalProfile.isEmpty()) 
             throw new PerfilNaoEncontradoException("O perfil relacionado para " + sessionUser.getFirstName() + " "
@@ -242,9 +242,9 @@ public class PerfilUsuarioService {
 
         com.tcc.seboonline.modelos.PerfilUsuario profile = getProfileByUser(user);
 
-        profile.setMaritalStatus(profileMaritalStatus.getMaritalStatus());
+        profile.setMarital_status(profileMaritalStatus.getMaritalStatus());
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     public com.tcc.seboonline.modelos.PerfilUsuario updateProfileBackground(ImagemUrlDTO profileBackground, Usuario sessionUser) throws UsuarioNEncontradoException, PerfilNaoEncontradoException {
@@ -259,7 +259,7 @@ public class PerfilUsuarioService {
 
         profile.setBackgroundImageUrl(profileBackground.getUrl());
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     public com.tcc.seboonline.modelos.PerfilUsuario updateProfileAvatar(ImagemUrlDTO avatar, Usuario sessionUser) throws UsuarioNEncontradoException, PerfilNaoEncontradoException {
@@ -277,7 +277,7 @@ public class PerfilUsuarioService {
         profile.setOwner(user);
         userRepository.save(user);
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     public List<com.tcc.seboonline.modelos.PerfilUsuario> getAllProfilesByIds(String commaSeparatedIds) throws FormatoIdErradoException {
@@ -289,7 +289,6 @@ public class PerfilUsuarioService {
     public List<com.tcc.seboonline.modelos.PerfilUsuario> getAllProfilesByIds(String commaSeparatedIds, long limit, boolean shuffle) throws FormatoIdErradoException {
         List<Integer> ids;
         List<com.tcc.seboonline.modelos.PerfilUsuario> profiles = new LinkedList<>();
-
 
         try { 
             if (limit > 0)  {
@@ -316,12 +315,11 @@ public class PerfilUsuarioService {
         if (shuffle) Collections.shuffle(ids);
 
         for (int id : ids) {
-            Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = profileRepository.findById(id);
+            Optional<com.tcc.seboonline.modelos.PerfilUsuario> optionalProfile = perfilUsuarioRepository.findById(id);
 
             if (optionalProfile.isPresent())
                 profiles.add(optionalProfile.get());
         }
-
 
         return profiles;
     }
@@ -342,7 +340,7 @@ public class PerfilUsuarioService {
         photoUrls.addFirst(imageUrlDTO.getUrl());
         profile.setPhotoUrls(photoUrls);
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
 
@@ -364,7 +362,7 @@ public class PerfilUsuarioService {
         photoUrls.remove(imageUrlDTO.getUrl());
         profile.setPhotoUrls(photoUrls);
 
-        return profileRepository.save(profile);
+        return perfilUsuarioRepository.save(profile);
     }
 
     

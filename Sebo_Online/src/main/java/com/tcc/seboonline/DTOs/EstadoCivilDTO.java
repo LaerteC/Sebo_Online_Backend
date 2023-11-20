@@ -12,6 +12,6 @@ public class EstadoCivilDTO {
     
 
     public EstadoCivilDTO(PerfilUsuario profile) {
-        this.setMaritalStatus(profile.getMaritalStatus());
+        this.setMaritalStatus(profile.getMarital_status());
     }
 }

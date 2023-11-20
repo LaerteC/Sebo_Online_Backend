@@ -29,11 +29,13 @@ public class RecuperarSenhaController {
     public ResponseEntity<String> enviarEmailSenha(@RequestBody String email){
         try {
             logger.info("Recebida solicitação para enviar email de recuperação de senha para o email: " + email);
+
             emailService.sendEmail(email);
             logger.info("Email enviado com sucesso para: " + email);
             Map<String, String> responseMap = new HashMap<>();
             responseMap.put("message", "E-mail de recuperação de senha enviado com sucesso.");
             return ResponseEntity.ok(responseMap.toString());
+
 
         } catch (Exception e) {
             logger.error("Falha ao enviar o email de recuperação de senha para: " + email, e);

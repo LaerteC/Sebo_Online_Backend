@@ -73,6 +73,7 @@ public class EmailServiceImpl implements MailService {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
 
             try {
+
                 MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
                 String emailTcc = EnumEmail.CLIENTE_1;
                 String assunto = EnumEmail.ASSUNTO_TROCA;

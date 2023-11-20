@@ -33,7 +33,7 @@ public class PerfilUsuario implements Serializable{
 
     private String dob;
     private String gender;
-    private String maritalStatus;
+    private String marital_status;
 
     private String schoolName;
 
@@ -68,7 +68,7 @@ public class PerfilUsuario implements Serializable{
         this.bornCountry = bornCountry;
         this.dob = dob;
         this.gender = gender;
-        this.maritalStatus = maritalStatus;
+        this.marital_status = maritalStatus;
         this.schoolName = schoolName;
         this.jobTitle = jobTitle;
         this.companyName = companyName;

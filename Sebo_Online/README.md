@@ -1,10 +1,14 @@
 <h1 align="center">
-  Projeto User / Task
+  Projeto TCC / SeboOnline
 </h1>
 
 <p align="center">
  <img src="https://img.shields.io/static/v1?label=SeboOnline&message=SistemaWeb&color=8257E5&labelColor=000000" alt="@laerte" />
  <img src="https://img.shields.io/static/v1?label=UFPR&message=TCC&color=8257E5&labelColor=000000" alt="Desafio/Teste" />
+</p>
+
+<p align="center">
+ <img src="https://img.shields.io/static/v1?label=BACKEND&message=SPRING&color=8257E5&labelColor=000000" alt="@laerte" />
 </p>
 
 API para Disponibilizar recursos para o front end ;
@@ -40,6 +44,12 @@ $ ./mvnw clean package
 $ java -jar target/todolist-0.0.1-SNAPSHOT.jar
 ```
 
+
+- Executar a aplicação 2 :
+```
+$ spring-boot:run
+```
+
 A API poderá ser acessada em [localhost:8081](http://localhost:8081).
 O Swagger poderá ser visualizado em [localhost:8081/swagger-ui.html](http://localhost:8081/swagger-ui.html)
 
@@ -47,42 +57,5 @@ O Swagger poderá ser visualizado em [localhost:8081/swagger-ui.html](http://loc
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [httpie](https://httpie.io):
 
-- Criar Tarefa/User 
-```
-$ http POST :8081
 
-[
-  {
-   
-  }
-]
-```
-
-- Listar 
-```
-$ http GET :8081
-
-[
-  {
-  
-  }
-]
-```
-
-- Atualizar T
-```
-$ http PUT :8081
-
-[
-  {
- 
-  }
-]
-```
-
-- Remover 
-```
-
-
-[ ]
-```
+![img_1.png](img_1.png)
