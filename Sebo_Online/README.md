@@ -1,5 +1,5 @@
 <h1 align="center">
-  Projeto User / Task
+  Projeto TCC / SeboOnline Solidário
 </h1>
 
 <p align="center">
@@ -47,42 +47,4 @@ O Swagger poderá ser visualizado em [localhost:8081/swagger-ui.html](http://loc
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [httpie](https://httpie.io):
 
-- Criar Tarefa/User 
-```
-$ http POST :8081
 
-[
-  {
-   
-  }
-]
-```
-
-- Listar 
-```
-$ http GET :8081
-
-[
-  {
-  
-  }
-]
-```
-
-- Atualizar T
-```
-$ http PUT :8081
-
-[
-  {
- 
-  }
-]
-```
-
-- Remover 
-```
-
-
-[ ]
-```
