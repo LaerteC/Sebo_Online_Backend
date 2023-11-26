@@ -13,6 +13,14 @@
 
 API para Disponibilizar recursos para o front end ;
 
+## Equipe :
+<ul>
+  <li>Emanuel Jaques</li>
+  <li>Felipe Vicente</li>
+  <li>Laerte Souza</li>
+
+  <li>Orientador :  Professor Doutor Dieval Guizelini</li>
+</ul>
 
 
 ## Tecnologias
@@ -22,6 +30,11 @@ API para Disponibilizar recursos para o front end ;
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
 - [SpringDoc OpenAPI 3](https://springdoc.org/v2/#spring-webflux-support)
 - [Postgresql](https://www.postgresql.org/download/)
+
+## Banco de Dados Postgresql
+
+O banco de dados utiliza a API JPA do Java de persistência.
+- JAVA JPA HIBERNATE
 
 ## **Práticas adotadas**
 
