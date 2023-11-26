@@ -71,4 +71,5 @@ O Swagger poderá ser visualizado em [localhost:8081/swagger-ui.html](http://loc
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [httpie](https://httpie.io):
 
 
-![img_1.png](img_1.png)
+![image](https://github.com/LaerteC/Sebo_Online_Backend/assets/66754738/7e5edc1a-4612-4341-9a80-6a00de65eb79)
+
