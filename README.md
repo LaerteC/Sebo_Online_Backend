@@ -15,8 +15,7 @@ API para Disponibilizar recursos para o front end ;
 
 ## Equipe :
 <ul>
-  <li>Emanuel Jaques</li>
-  <li>Felipe Vicente</li>
+  
   <li>Laerte Souza</li>
 
   <li>Orientador :  Professor Doutor Dieval Guizelini</li>
